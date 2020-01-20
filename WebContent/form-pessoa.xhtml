@@ -14,12 +14,18 @@
 		<h:inputText id="nome" value="#{pessoaBean.nome}" />
 		<br />
 
-		<h:outputLabel value="Sobrenome:" for="sobrenome" />
+		<h:outputLabel value="Senha:" for="senha" />
 		<br />
-		<h:inputText id="sobrenome" value="#{pessoaBean.sobrenome}" />
+		<h:inputSecret id="senha" value="#{pessoaBean.senha}" />
 		<br />
 
-		<h:commandButton binding="#{pessoaBean.commandButton}" value="Salvar" action="#{pessoaBean.addNome}"/>
+		<h:outputLabel value="Descrição:" for="texto" />
+		<br />
+		<h:inputTextarea id="texto" value="#{pessoaBean.texto}" rows="5" cols="10"/>
+		<br />
+		
+		<h:commandButton binding="#{pessoaBean.commandButton}" value="Salvar"
+			action="#{pessoaBean.addNome}" />
 
 	</h:form>
 
@@ -31,7 +37,7 @@
 			<h:column>
 				<f:facet name="header">Nome:</f:facet>
     				#{n}
-    			</h:column>
+    		</h:column>
 		</h:dataTable>
 
 	</h:form>
