@@ -3,9 +3,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html">
 	
+	<head>
+		<title>Index JSF</title>
+		
+		<script>
+			function alterarValorDoCampo() {
+				var campo = document.getElementById('formPessoa:nome');
+				campo.value = 'Foi clicado no campo :)';
+			} 
+		</script>
+	</head>
 	<h:body>
+	
 		<h1>Seja bem vindo ao JSF</h1>
-		<h:form>
+		
+		<h:form id="formPessoa">
+			
+			<h:inputText id="nome" onclick="this.value='troquei o valor'" onchange="this.value = this.value.toUpperCase();"/>
+			<h:commandButton value="Clicar" onclick="alterarValorDoCampo();"/>
+			<br/>
+			<br/>
 			<!-- Navegação implicita, ou seja: não precisa declarar a exteção do arquivo '.xhtml' -->
 			<h:commandButton value="Cadastro de Pessoas" action="form-pessoa"></h:commandButton>
 			
