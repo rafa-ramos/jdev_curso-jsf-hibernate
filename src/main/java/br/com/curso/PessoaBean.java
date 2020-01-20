@@ -52,7 +52,7 @@ public class PessoaBean {
 		if (nomes.size() == 1) {
 			
 			commandButton.setDisabled(true);
-			return "navegacao-dinamica";
+			return "navegacao-dinamica?faces-redirect=true";
 		}
 		
 		nomes.add(nomeCompleto);

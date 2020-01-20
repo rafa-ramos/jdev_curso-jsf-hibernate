@@ -7,7 +7,10 @@
 		<h1>Seja bem vindo ao JSF</h1>
 		<h:form>
 			<!-- Navegação implicita, ou seja: não precisa declarar a exteção do arquivo '.xhtml' -->
-			<h:commandButton value="Cadastro de Pessoas" action="form-pessoa"></h:commandButton>		
+			<h:commandButton value="Cadastro de Pessoas" action="form-pessoa"></h:commandButton>
+			
+			<!-- Navegação Explicita, é definida dentro do faces-config.xml -->
+			<h:commandButton value="Cadastro de Pessoas (Navegação Explicita)" action="explicita"></h:commandButton>		
 		</h:form>
 	</h:body>
 </html>
