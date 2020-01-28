@@ -9,6 +9,10 @@
 </h:head>
 <h:body>
 	<h:form id="formPessoa">
+		<h:outputLabel value="ID:" for="id" />
+		<br />
+		<h:inputText id="id" value="#{pessoaBean.pessoa.id}" readonly="true" />
+		<br />
 		<h:outputLabel value="Nome:" for="nome" />
 		<br />
 		<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" />
@@ -25,14 +29,14 @@
 		<br />
 		<h:inputText id="dataNascimento" value="#{pessoaBean.pessoa.dataNascimento}" />
 		<br /> -->
-		
+	
+		<h:commandButton value="Limpar" action="#{pessoaBean.limpar}"></h:commandButton>
 		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"></h:commandButton>
-		
 
 	</h:form>
 
 	<h:form id="tabelaNomes">
-		
+
 
 	</h:form>
 </h:body>

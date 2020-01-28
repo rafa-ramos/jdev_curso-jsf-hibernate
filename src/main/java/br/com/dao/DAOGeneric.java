@@ -18,4 +18,17 @@ public class DAOGeneric<O> {
 		entityManager.close();
 	}
 	
+	public O merge(O object) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		O result = entityManager.merge(object);
+		
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return result;
+	}
+	
 }
