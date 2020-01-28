@@ -11,34 +11,28 @@
 	<h:form id="formPessoa">
 		<h:outputLabel value="Nome:" for="nome" />
 		<br />
-		<h:inputText id="nome" value="#{pessoaBean.nome}" />
+		<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}" />
 		<br />
-
-		<h:outputLabel value="Senha:" for="senha" />
+		<h:outputLabel value="Sobrenome:" for="sobrenome" />
 		<br />
-		<h:inputSecret id="senha" value="#{pessoaBean.senha}" />
+		<h:inputText id="sobrenome" value="#{pessoaBean.pessoa.sobrenome}" />
 		<br />
-
-		<h:outputLabel value="Descrição:" for="texto" />
+		<h:outputLabel value="Idade:" for="idade" />
 		<br />
-		<h:inputTextarea id="texto" value="#{pessoaBean.texto}" rows="5" cols="10"/>
+		<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 		<br />
+		<!-- <h:outputLabel value="Data de Nascimento:" for="dataNascimento" />
+		<br />
+		<h:inputText id="dataNascimento" value="#{pessoaBean.pessoa.dataNascimento}" />
+		<br /> -->
 		
-		<h:commandButton binding="#{pessoaBean.commandButton}" value="Salvar"
-			action="#{pessoaBean.addNome}" />
+		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"></h:commandButton>
+		
 
 	</h:form>
 
 	<h:form id="tabelaNomes">
-		<h:dataTable value="#{pessoaBean.nomes}" var="n"
-			styleClass="order-table" headerClass="order-table-header"
-			rowClasses="order-table-odd-row,order-table-even-row">
-
-			<h:column>
-				<f:facet name="header">Nome:</f:facet>
-    				#{n}
-    		</h:column>
-		</h:dataTable>
+		
 
 	</h:form>
 </h:body>
