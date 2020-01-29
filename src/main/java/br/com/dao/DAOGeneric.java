@@ -31,4 +31,32 @@ public class DAOGeneric<O> {
 		return result;
 	}
 	
+	public void delete(O object) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		entityManager.remove(object);
+		
+		entityTransaction.commit();
+		entityManager.close();
+	}
+	
+	public void deletePorId(O object) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		Object id = JPAUtil.getPrimaryKey(object);
+		
+		/*entityManager.createQuery("DELETE FROM :entity WHERE id = :id").
+			setParameter("entity", object.getClass().getCanonicalName()).
+			setParameter("id", JPAUtil.getPrimaryKey(object)).executeUpdate(); */
+		
+		entityManager.createQuery("DELETE FROM " + object.getClass().getCanonicalName() +" WHERE id = " + id).
+		 	executeUpdate();
+		
+		entityTransaction.commit();
+		entityManager.close();
+	}
 }
