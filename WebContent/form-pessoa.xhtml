@@ -25,10 +25,6 @@
 		<br />
 		<h:inputText id="idade" value="#{pessoaBean.pessoa.idade}" />
 		<br />
-		<!-- <h:outputLabel value="Data de Nascimento:" for="dataNascimento" />
-		<br />
-		<h:inputText id="dataNascimento" value="#{pessoaBean.pessoa.dataNascimento}" />
-		<br /> -->
 	
 		<h:commandButton value="Limpar" action="#{pessoaBean.limpar}"></h:commandButton>
 		<h:commandButton value="Salvar" action="#{pessoaBean.salvar}"></h:commandButton>
@@ -43,6 +39,16 @@
 			</h:column>
 			<h:column>
 				<h:outputText value="#{p.sobrenome}"></h:outputText>
+			</h:column>
+			<h:column>
+				<h:commandLink value="Editar">
+					<f:setPropertyActionListener value="#{p}" target="#{pessoaBean.pessoa}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
+				<h:commandLink value="Remover" action="#{pessoaBean.remover}">
+					<f:setPropertyActionListener value="#{p}" target="#{pessoaBean.pessoa}" />
+				</h:commandLink>
 			</h:column>
 		</h:dataTable>
 
