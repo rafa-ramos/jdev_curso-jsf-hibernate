@@ -1,5 +1,7 @@
 package br.com.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -47,16 +49,24 @@ public class DAOGeneric<O> {
 		EntityTransaction entityTransaction = entityManager.getTransaction();
 		entityTransaction.begin();
 		
-		Object id = JPAUtil.getPrimaryKey(object);
-		
-		/*entityManager.createQuery("DELETE FROM :entity WHERE id = :id").
-			setParameter("entity", object.getClass().getCanonicalName()).
-			setParameter("id", JPAUtil.getPrimaryKey(object)).executeUpdate(); */
-		
-		entityManager.createQuery("DELETE FROM " + object.getClass().getCanonicalName() +" WHERE id = " + id).
-		 	executeUpdate();
+		entityManager.remove(entityManager.getReference(object.getClass(), JPAUtil.getPrimaryKey(object)));
 		
 		entityTransaction.commit();
 		entityManager.close();
+	}
+	
+	public List<O> getList(Class<O> object) {
+		EntityManager entityManager = JPAUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+		
+		@SuppressWarnings("unchecked")
+		List<O> result = entityManager.createQuery("FROM " + object.getName()).
+				getResultList();
+
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return result;
 	}
 }

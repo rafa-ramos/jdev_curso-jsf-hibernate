@@ -1,5 +1,9 @@
 package br.com.curso;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -39,9 +43,11 @@ public class PessoaBean {
 	
 	private Pessoa pessoa = new Pessoa();
 	private DAOGeneric<Pessoa> daoGeneric = new DAOGeneric<Pessoa>();
+	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 	
 	public String salvar() {
 		pessoa = daoGeneric.merge(pessoa);
+		carregarPessoas();
 		return "";
 	}
 	
@@ -52,9 +58,14 @@ public class PessoaBean {
 	
 	public String remover() {
 		daoGeneric.deletePorId(pessoa);
-		
+		carregarPessoas();
 		pessoa = new Pessoa();
 		return "";
+	}
+	
+	@PostConstruct
+	public void carregarPessoas() {
+		pessoas = daoGeneric.getList(Pessoa.class);
 	}
 
 	public Pessoa getPessoa() {
@@ -73,5 +84,8 @@ public class PessoaBean {
 		this.daoGeneric = daoGeneric;
 	}
 	
+	public List<Pessoa> getPessoas() {
+		return pessoas;
+	}
 
 }
