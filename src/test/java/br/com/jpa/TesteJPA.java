@@ -1,4 +1,4 @@
-package br.com.curso;
+package br.com.jpa;
 
 import javax.persistence.Persistence;
 

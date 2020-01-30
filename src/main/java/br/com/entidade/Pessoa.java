@@ -21,11 +21,10 @@ public class Pessoa implements Serializable{
 	
 	private String nome;
 	private String sobrenome;
-	private Integer idade;
-	
+	private Integer idade;	
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
-	
+	private String sexo;
 	
 	public Pessoa() {
 		super();
@@ -60,6 +59,13 @@ public class Pessoa implements Serializable{
 	}
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 
 	@Override
